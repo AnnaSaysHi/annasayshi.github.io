@@ -51,7 +51,7 @@ const INDEX =
 			}
 			]
 
-	}
+	},
 	{
 		"groupName": "Links",
 		"path": null,
