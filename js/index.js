@@ -3,7 +3,7 @@ const INDEX =
 [
 	{
 		"groupName": "Home",
-		"name": "Anna's Github page",
+		"name": "Anna says hi's Github pages",
 		"single": true,
 		"path": "/",
 		"type": "site",
