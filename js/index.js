@@ -26,7 +26,7 @@ const INDEX =
 		"groupName": "ShmupCC tutorial",
 		"name": "ShmupCC tutorial",
 		"single": true,
-		"path": "ecl-tutorial/",
+		"path": "shmupCC-tutorial/",
 		"type": "blog",
 		"url": 14,
 		"max": 1,
@@ -40,6 +40,18 @@ const INDEX =
 		"type": "redirect",
 		"url": "modding/"
 	},
+	{
+		"groupName": "ShmupCC",
+		"path": "shmupCC/",
+		"content":[
+			{
+				"name": "ShmupCC Tutorial",
+				"type": "href",
+				"url": "#b=shmupCC-tutorial/&p=1"
+			}
+			]
+
+	}
 	{
 		"groupName": "Links",
 		"path": null,
