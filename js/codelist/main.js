@@ -34,7 +34,7 @@ function getVarTableRow(v) {
 
 function getVarLimits(game) {
 	switch(game) {
-		case "1.1.0": return VARLIMIT_1_1_0;
+		case "1_1_0": return VARLIMIT_1_1_0;
 	}
 }
 
@@ -54,7 +54,7 @@ function getVar(game, id) {
 function getVarNoCheck(game, id) {
 	let ret = null;
 	switch(game) {
-		case "1.1.0":
+		case "1_1_0":
 			if (!ret) ret = getVarFromList(VAR_1_1_0, id);
 			break;
 	}
@@ -84,14 +84,14 @@ function getVarTip(v) {
 function normalizeGameVersion(num) {
 	switch(num){
         case 110:
-            return "1.1.0";z
+            return "1_1_0";
     }
 	return num;
 }
 
 function getGroups(game) {
 	switch(game) {
-        case "1.1.0": return GROUPS_1_1_0;
+        case "1_1_0": return GROUPS_1_1_0;
 	}
 }
 
@@ -116,7 +116,7 @@ function getOpcodeNoCheck(game, num, timeline) {
 	if (!timeline) {
 		switch(game) {
 			// Inherits ins from previous versions.
-			case "1.1.0":
+			case "1_1_0":
 				ret = getOpcodeFromList(INS_1_1_0, num);
 				if (ret) {
 					if (ret.noInherit && ret.game != game)
@@ -201,23 +201,17 @@ function generateOpcodeTableEntry(ins, num, timeline) {
 <tr>
 	<td class="ins-id">${num}</td>
 	<td class="ins-signature">
-		<span class="ins-name">${getOpcodeName(num, ins ? ins.documented : false, timeline)}</span><wbr><span class="ins-params">${generateOpcodeParameters(ins)}</span>
+		<span class="ins-name">${getOpcodeName(ins)}</span><wbr><span class="ins-params">${generateOpcodeParameters(ins)}</span>
 	<td class="ins-desc">${generateOpcodeDesc(ins)}</td>
 </tr>
 `;
 }
 
-function getOpcodeName(num, documented, timeline) {
-	let name;
-	if (currentMap != null) 
-		name = timeline ? currentMap.getTimelineMnemonic(num) : currentMap.getMnemonic(num);
-	else
-		name = `ins_${num}`;
-
-	if (documented)
-		return name;
-	else
-		return `<span style='color:red'>${name}</span>`
+function getOpcodeName(ins) {
+	return ins.package + "." + ins.name;
+}
+function getOpcodeShortName(ins){
+	return ins.name;
 }
 
 function generateOpcodeParameters(ins) {
@@ -246,7 +240,7 @@ function generateOpcodeDesc(ins, notip=false) {
 function getOpcodeTip(ins, timeline) {
 	return escapeTip(
 /* NOTE: his string must abolutely NOT have any newlines in it */
-`<br><b>${timeline ? "timeline ": ""}${ins.number} - ${getOpcodeName(ins.number, ins.documented, timeline)}(${generateOpcodeParameters(ins)})</b><br><hr>${generateOpcodeDesc(ins, true)}`
+`<br><b>${getOpcodeName(ins)}(${generateOpcodeParameters(ins)})</b><br><hr>${generateOpcodeDesc(ins, true)}`
 	);
 }
 

@@ -9,8 +9,7 @@ const GROUPS_1_1_0 =
         min: 300,
         max: 304,
         title: "game.StageScript"
-    }
-/*
+    },
     {
         min: 450,
         max: 521,
@@ -67,16 +66,14 @@ const GROUPS_1_1_0 =
         min: 2500,
         max: 2550,
         title: "game.enemy.EnemyMovementInterpolator"
-    },*/
-    
-
-    
+    }  
 ];
 
 const INS_1_1_0 = {
     0: {
         number: 0,
-        name: "Game.tick",
+        name: "tick",
+        package: "Game",
         version: "1.1.0",
         args: "",
         argnames: [],
@@ -85,7 +82,8 @@ const INS_1_1_0 = {
     },
     1: {
         number: 1,
-        name: "Game.render",
+        name: "render",
+        package: "Game",
         version: "1.1.0",
         args: "",
         argnames: [],
@@ -102,7 +100,8 @@ const INS_1_1_0 = {
     9: null,
     10: {
         number: 10,
-        name: "Game.getAngleToPlayer",
+        name: "getAngleToPlayer",
+        package: "Game",
         version: "1.1.0",
         args: "ff",
         argnames: ["x", "y"],
@@ -111,7 +110,8 @@ const INS_1_1_0 = {
     },
     11: {
         number: 11,
-        name: "Game.fetchRNG",
+        name: "fetchRNG",
+        package: "Game",
         version: "1.1.0",
         args: "",
         argnames: [],
@@ -120,7 +120,8 @@ const INS_1_1_0 = {
     },
     12: {
         number: 12,
-        name: "Game.randRad",
+        name: "randRad",
+        package: "Game",
         version: "1.1.0",
         args: "",
         argnames: [],
@@ -129,7 +130,8 @@ const INS_1_1_0 = {
     },
     13: {
         number: 13,
-        name: "Game.intDiff",
+        name: "intDiff",
+        package: "Game",
         version: "1.1.0",
         args: "SS",
         argnames: ["a", "b"],
@@ -138,7 +140,8 @@ const INS_1_1_0 = {
     },
     14: {
         number: 14,
-        name: "Game.floatDiff",
+        name: "floatDiff",
+        package: "Game",
         version: "1.1.0",
         args: "ff",
         argnames: ["a", "b"],
@@ -149,6 +152,7 @@ const INS_1_1_0 = {
     300: {
         number: 300,
         name: "StageScript",
+        package: "",
         version: "1.1.0",
         args: "BgpEs",
         argnames: ["mgr", "g", "playerChar", "enmMgr", "smgr"],
@@ -157,7 +161,8 @@ const INS_1_1_0 = {
     },
     301: {
         number: 301,
-        name: "StageScript.init",
+        name: "init",
+        package: "StageScript",
         version: "1.1.0",
         args: "",
         argnames: [],
@@ -166,7 +171,8 @@ const INS_1_1_0 = {
     },
     302: {
         number: 302,
-        name: "StageScript.init",
+        name: "init",
+        package: "StageScript",
         version: "1.1.0",
         args: "S",
         argnames: ["argA"],
@@ -175,16 +181,18 @@ const INS_1_1_0 = {
     },
     303: {
         number: 303,
-        name: "StageScript.initActions",
+        name: "initActions",
+        package: "StageScript",
         version: "1.1.0",
         args: "",
         argnames: [],
-        description: "An abstract method that is invoked whenever the stage must be initialized.",
+        description: "An abstract method that is invoked whenever the stage is initialized.",
         documented: true
     },
     304: {
         number: 303,
-        name: "StageScript.initActions",
+        name: "initActions",
+        package: "StageScript",
         version: "1.1.0",
         args: "S",
         argnames: ["argA"],
