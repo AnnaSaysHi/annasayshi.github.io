@@ -140,10 +140,10 @@ let ext = function() {
 				timeline = true;
 				game = game.substring(1);
 			}
-			const ins = getOpcode(parseFloat(game), parseInt(num), timeline);
+			const ins = getOpcode(parseFloat(game), num, timeline);
 			if (ins == null) return "`opcode\\_error\\_"+num+"`";
 			let tip = getOpcodeTip(ins, timeline);
-			return "<instr data-tip=\""+tip+"\">"+getOpcodeName(ins.number, ins.documented, timeline)+"</instr>";
+			return "<instr data-tip=\""+tip+"\">"+getOpcodeShortName(ins)+"</instr>";
 		}
 	}
 	let method_notip = {
@@ -168,7 +168,7 @@ let ext = function() {
 			const variable = getVar(normalizeGameVersion(game), parseInt(num));
 			if (variable == null) return "<instr>variable\\_error\\_"+num+"</instr>";
 			let tip = getVarTip(variable);
-			return "<instr data-tip=\""+tip+"\">"+getVarName(num, variable.documented) +"</instr>";
+			return "<instr data-tip=\""+tip+"\">"+getVarName(variable) +"</instr>";
 		}
 	}
 
@@ -178,7 +178,7 @@ let ext = function() {
 		replace: function(match, num, game) {
 			const variable = getVar(normalizeGameVersion(game), parseInt(num));
 			if (variable == null) return "<instr>variable\\_error\\_"+num+"</instr>";
-			return "<instr>"+getVarName(num, variable.documented)+"</instr>";
+			return "<instr>"+getVarName(variable)+"</instr>";
 		}
 	}
 
@@ -353,5 +353,5 @@ let ext = function() {
 		}
 	}
 
-	return [anmSelect, eclmap, yt, hr, br, ts, img, img_small, ins, ins_notip,  variable, variable_notip, code, title, c, include, game, rawGame, html, script, tip, video, flex, flex2, et, anm];
+	return [anmSelect, eclmap, yt, hr, br, ts, img, img_small, method, method_notip,  variable, variable_notip, code, title, c, include, game, rawGame, html, script, tip, video, flex, flex2, et, anm];
 }
