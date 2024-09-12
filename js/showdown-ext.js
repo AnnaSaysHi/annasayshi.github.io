@@ -131,9 +131,9 @@ let ext = function() {
 		}
 	}
 
-	let ins = {
+	let method = {
 		type: "lang",
-		regex: /\[ins=(.*?),(.*?)\]/g,
+		regex: /\[method=(.*?),(.*?)\]/g,
 		replace: function(match, num, game) {
 			let timeline = false;
 			if (game[0] == "t") {
@@ -146,9 +146,9 @@ let ext = function() {
 			return "<instr data-tip=\""+tip+"\">"+getOpcodeName(ins.number, ins.documented, timeline)+"</instr>";
 		}
 	}
-	let ins_notip = {
+	let method_notip = {
 		type: "lang",
-		regex: /\[ins_notip=(.*?),(.*?)\]/g,
+		regex: /\[method_notip=(.*?),(.*?)\]/g,
 		replace: function(match, num, game) {
 			let timeline = false;
 			if (game[0] == "t") {
