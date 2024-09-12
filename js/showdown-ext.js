@@ -353,5 +353,5 @@ let ext = function() {
 		}
 	}
 
-	return [anmSelect, eclmap, yt, hr, br, ts, img, img_small, ins, ins_notip,  variable, variable_notip, code, title, c, include, game, rawGame, html, script, tip, video, flex, flex2, et, anm];
+	return [anmSelect, eclmap, yt, hr, br, ts, img, img_small, method, method_notip,  variable, variable_notip, code, title, c, include, game, rawGame, html, script, tip, video, flex, flex2, et, anm];
 }
