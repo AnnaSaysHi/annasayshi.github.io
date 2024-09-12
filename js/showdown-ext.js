@@ -168,7 +168,7 @@ let ext = function() {
 			const variable = getVar(normalizeGameVersion(game), parseInt(num));
 			if (variable == null) return "<instr>variable\\_error\\_"+num+"</instr>";
 			let tip = getVarTip(variable);
-			return "<instr data-tip=\""+tip+"\">"+getVarName(num, variable.documented) +"</instr>";
+			return "<instr data-tip=\""+tip+"\">"+getVarName(variable) +"</instr>";
 		}
 	}
 
@@ -178,7 +178,7 @@ let ext = function() {
 		replace: function(match, num, game) {
 			const variable = getVar(normalizeGameVersion(game), parseInt(num));
 			if (variable == null) return "<instr>variable\\_error\\_"+num+"</instr>";
-			return "<instr>"+getVarName(num, variable.documented)+"</instr>";
+			return "<instr>"+getVarName(variable)+"</instr>";
 		}
 	}
 
