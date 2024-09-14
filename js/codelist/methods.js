@@ -266,7 +266,7 @@ const INS_1_1_0 = {
         version: "1_1_0",
         args: "SS",
         argnames: ["switchTo", "newCursorPos"],
-        description: "Not implemented yet. Use [method=MenuManager.switchActiveMenu1,1_1_0]`(`%1`)` instead.",
+        description: "Not implemented yet. Please wait warmly.",
         documented: true
     },
     455: {
