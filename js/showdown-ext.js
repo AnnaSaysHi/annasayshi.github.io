@@ -140,7 +140,7 @@ let ext = function() {
 				timeline = true;
 				game = game.substring(1);
 			}
-			const ins = getOpcode(parseFloat(game), num, timeline);
+			const ins = getOpcode(game, num, timeline);
 			if (ins == null) return "`opcode\\_error\\_"+num+"`";
 			let tip = getOpcodeTip(ins, timeline);
 			return "<instr data-tip=\""+tip+"\">"+getOpcodeShortName(ins)+"</instr>";

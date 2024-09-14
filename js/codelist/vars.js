@@ -7,7 +7,7 @@ const VARLIMIT_1_1_0 = [0, 2];
 const VAR_1_1_0 = {
     "0": {
         number: 0,
-        name: "GVAR_REDUCE_CPU_USAGE",
+        name: "GVAR\\\_REDUCE\\\_CPU\\\_USAGE",
         version: "1.1.0",
         type: "$",
         access: "ro",
@@ -17,7 +17,7 @@ const VAR_1_1_0 = {
     },
     "1": {
         number: 1,
-        name: "GVAR_DIFFICULTY",
+        name: "GVAR\\\_DIFFICULTY",
         version: "1.1.0",
         type: "$",
         access: "ro",
@@ -27,7 +27,7 @@ const VAR_1_1_0 = {
     },
     "2": {
         number: 2,
-        name: "GVAR_INFINITE_LIVES",
+        name: "GVAR\\\_INFINITE\\\_LIVES",
         version: "1.1.0",
         type: "%",
         access: "ro",

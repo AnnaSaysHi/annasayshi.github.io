@@ -33,6 +33,7 @@ function getVarTableRow(v) {
 }
 
 function getVarLimits(game) {
+	game = normalizeGameVersion(game);
 	switch(game) {
 		case "1_1_0": return VARLIMIT_1_1_0;
 	}
@@ -77,21 +78,24 @@ function getVarTip(v) {
 	let typeString = v.type == "$" ? "int" : "float";
 	let accessString = v.access == "rw" ? "read/write" : "read-only";
 	let scopeString = v.scope == "g" ? "global" : "local";
-	let tip = `**${idString} - ${getVarName(v.number, v.documented)}** - ${scopeString}, ${accessString}, ${typeString} variable[br][hr]${v.desc}`;
+	let tip = `**${idString} - ${getVarName(v)}** - ${scopeString}, ${accessString}, ${typeString} variable[br][hr]${v.desc}`;
 	return MD.makeHtml(tip.replace(/\[var=/g, "[var_notip="));
 }
 
 function normalizeGameVersion(num) {
 	switch(num){
-        case 110:
-            return "1_1_0";
+        case 110: return "1_1_0";
+		case "110": return "1_1_0";
+		case "1.1.0": return "1_1_0";
+		case "\"1_1_0\"": return "1_1_0";
     }
 	return num;
 }
 
 function getGroups(game) {
 	switch(game) {
-        case "1_1_0": return GROUPS_1_1_0;
+        case "1_1_0":
+			 return GROUPS_1_1_0;
 	}
 }
 
@@ -161,7 +165,7 @@ function getOpcode(game, num, timeline) {
 
 function generateOpcodeTable(game) {
 	const normalized = normalizeGameVersion(game);
-	let base = `Current table: [game=${normalized}] version ${game == GAME_ECLPLUS ? "ECLplus" : game}[/game][br]`;
+	let base = `Selected version: 1.1.0[br]`;
 
 	let navigation = "<div class='ins-navigation'><h3>Navigation</h3>";
 	let table = "";
@@ -172,9 +176,9 @@ function generateOpcodeTable(game) {
 	for (let i=0; i<groups.length; ++i) {
 		const group = groups[i];
 
-		navigation += `- <span class='ins-navigation-entry' data-target='${group.title}'>${group.title} (${group.min}-${group.max})</span><br>`
+		navigation += `- <span class='ins-navigation-entry' data-target='${group.title}'>${group.title}</span><br>`
 
-		table += `<br><h2 data-insnavigation="${group.title}">${group.min}-${group.max}: ${group.title}</h2>`;
+		table += `<br><h2 data-insnavigation="${group.title}"> ${group.title}</h2>`;
 		table += "<table class='ins-table'>";
 
 		for (let num=group.min; num<=group.max; ++num) {
@@ -185,21 +189,19 @@ function generateOpcodeTable(game) {
 			if (instrDocumented) documented += 1;
 			if (instrExists) {
 				total += 1;
-				table += generateOpcodeTableEntry(ins, num, group.timeline);
+				table += generateOpcodeTableEntry(ins);
 			}
 		}
 
 		table += "</table>";
 	}
 	navigation += "</div>";
-	base += `Documented instructions: ${documented}/${total} (${(documented/total*100).toFixed(2)}%)[br]`;
 	return MD.makeHtml(base) + navigation + table;
 }
 
-function generateOpcodeTableEntry(ins, num, timeline) {
+function generateOpcodeTableEntry(ins) {
 	return `
 <tr>
-	<td class="ins-id">${num}</td>
 	<td class="ins-signature">
 		<span class="ins-name">${getOpcodeName(ins)}</span><wbr><span class="ins-params">${generateOpcodeParameters(ins)}</span>
 	<td class="ins-desc">${generateOpcodeDesc(ins)}</td>

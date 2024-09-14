@@ -42,6 +42,11 @@ const INDEX =
 				"name": "ShmupCC Tutorial",
 				"type": "href",
 				"url": "#b=shmupCC-tutorial/&p=1"
+			},
+			{
+				"name": "ShmupCC method list",
+				"type": "site",
+				"url": "methods"
 			}
 			]
 
