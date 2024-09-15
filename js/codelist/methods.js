@@ -14,18 +14,17 @@ const GROUPS_1_1_0 =
         min: 450,
         max: 457,
         title: "game.menu.MenuManager"
-    }
-    /*
+    },
     {
         min: 600,
-        max: 671,
+        max: 609,
         title: "game.Menu.MenuNew"
     },
     {
         min: 700,
-        max: 771,
+        max: 704,
         title: "game.Menu.MenuEntry"
-    },
+    }/*
     {
         min: 800,
         max: 871,
@@ -299,6 +298,156 @@ const INS_1_1_0 = {
         description: "Renders the pause menu. Only called if the game is paused.",
         documented: true
     },
+    600: {
+        number: 600,
+        name: "MenuNew",
+        package: "",
+        version: "1_1_0",
+        args: "gksM",
+        argnames: ["g", "kbh", "smgr", "mmgr"],
+        description: "Constructs and returns an empty MenuNew struct.",
+        documented: true
+    },
+    601: {
+        number: 601,
+        name: "addNewEntry",
+        package: "menu.MenuNew",
+        version: "1_1_0",
+        args: "mSSSS",
+        argnames: ["text", "behavior", "behaviorArg1", "xpos", "ypos"],
+        description: "Constructs a MenuEntry and adds it to this `MenuNew`'s `entries` field.",
+        documented: true
+    },
+    602: {
+        number: 602,
+        name: "addSubMenu",
+        package: "menu.MenuNew",
+        version: "1_1_0",
+        args: "mOSS",
+        argnames: ["text", "subMenu", "xpos", "ypos"],
+        description: "Constructs a MenuEntry that behaves as a submenu and adds it to this `MenuNew`'s `entries` field.",
+        documented: true
+    },
+    603: {
+        number: 603,
+        name: "addUnselectableEntry",
+        package: "menu.MenuNew",
+        version: "1_1_0",
+        args: "mSS",
+        argnames: ["text", "xpos", "ypos"],
+        description: "Constructs a half-finished MenuEntry and adds it to this `MenuNew`'s `entries` field. This MenuEntry will not be selectable, but its text is visible.",
+        documented: true
+    },
+    604: {
+        number: 604,
+        name: "setArgsOfEntry",
+        package: "menu.MenuNew",
+        version: "1_1_0",
+        args: "SSS",
+        argnames: ["arg2", "arg3", "arg4"],
+        description: "Sets the `arg2`, `arg3`, and `arg4` fields of the most recently added MenuEntry to %1, %2, and %3.",
+        documented: true
+    },
+    605: {
+        number: 605,
+        name: "tick",
+        package: "menu.MenuNew",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Runs all logic related to being in this specific menu.",
+        documented: true
+    },
+    606: {
+        number: 606,
+        name: "reactivate",
+        package: "menu.MenuNew",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Re-activates this menu without affecting the cursor's position.",
+        documented: true
+    },
+    607: {
+        number: 607,
+        name: "reactivate",
+        package: "menu.MenuNew",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["index"],
+        description: "Re-activates this menu, and sets the cursor's position to %1.",
+        documented: true
+    },
+    608: {
+        number: 608,
+        name: "setSelectedEntry",
+        package: "menu.MenuNew",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["index"],
+        description: "Sets the cursor's position to %1. Throws an Exception if %1 is less than 0 or greater than or equal to the number of selectable entries.",
+        documented: true
+    },
+    609: {
+        number: 609,
+        name: "render",
+        package: "menu.MenuNew",
+        version: "1_1_0",
+        args: "G",
+        argnames: ["g"],
+        description: "Renders this specific menu.",
+        documented: true
+    },
+    700: {
+        number: 700,
+        name: "MenuEntry",
+        package: "",
+        version: "1_1_0",
+        args: "gMmSSSS",
+        argnames: ["parent", "mmgr", "text", "behavior", "behaviorArg1", "x", "y"],
+        description: "Constructs and returns a `MenuEntry` struct.",
+        documented: true
+    },
+    701: {
+        number: 701,
+        name: "MenuEntry",
+        package: "",
+        version: "1_1_0",
+        args: "gmSS",
+        argnames: ["parent", "text", "x", "y"],
+        description: "Half-constructs and returns a `MenuEntry` struct. This entry is intended to be visual-only and will have undefined behavior if selected.",
+        documented: true
+    },
+    702: {
+        number: 702,
+        name: "setExtendedArguments",
+        package: "menu.MenuEntry",
+        version: "1_1_0",
+        args: "SSS",
+        argnames: ["behaviorArg2", "behaviorArg3", "behaviorArg4"],
+        description: "Sets the extended argument fields. Not all behaviors use these fields.",
+        documented: true
+    },
+    703: {
+        number: 703,
+        name: "onSelect",
+        package: "menu.MenuEntry",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Runs all logic related to selecting this entry.",
+        documented: true
+    },
+    704: {
+        number: 704,
+        name: "render",
+        package: "menu.MenuEntry",
+        version: "1_1_0",
+        args: "G",
+        argnames: ["g"],
+        description: "Renders this MenuEntry. Actually unused, since MenuNew handles rendering the entries itself.",
+        documented: true
+    },
 
 }
 
@@ -316,6 +465,8 @@ const ARGTYPES = {
     "p": "Player",
     "s": "SoundManager",
     "k": "KBinputHandler",
+    "M": "MenuManager",
+    "O": "OptionSelector",
     "o": "object"
 }
 function opcodeNameToNumber(name){
@@ -342,5 +493,20 @@ function opcodeNameToNumber(name){
         case "MenuManager.tickPauseMenu": return 455;
         case "MenuManager.renderCurrentMenu": return 456;
         case "MenuManager.renderPauseMenu": return 457;
+        case "MenuNew": return 600;
+        case "MenuNew.addNewEntry": return 601;
+        case "MenuNew.addSubMenu": return 602;
+        case "MenuNew.addUnselectableEntry": return 603;
+        case "MenuNew.setArgsOfEntry": return 604;
+        case "MenuNew.tick": return 605;
+        case "MenuNew.reactivate1": return 606;
+        case "MenuNew.reactivate2": return 607;
+        case "MenuNew.setSelectedEntry": return 608;
+        case "MenuNew.render": return 609;
+        case "MenuEntry.constructor1": return 700;
+        case "MenuEntry.setExtendedArguments": return 702;
+        case "MenuEntry.constructor2": return 701;
+        case "MenuEntry.onSelect": return 703;
+        case "MenuEntry.render": return 704;
     }
 }
