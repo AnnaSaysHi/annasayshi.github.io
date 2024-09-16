@@ -18,24 +18,24 @@ const GROUPS_1_1_0 =
     {
         min: 440,
         max: 449,
-        title: "game.Menu.MenuNew"
+        title: "game.menu.MenuNew"
     },
     {
         min: 470,
         max: 474,
-        title: "game.Menu.MenuEntry"
+        title: "game.menu.MenuEntry"
     },
     {
         min: 485,
         max: 491,
-        title: "game.Menu.OptionSelector"
-    }/*
+        title: "game.menu.OptionSelector"
+    },
     
     {
-        min: 1000,
-        max: 1047,
+        min: 500,
+        max: 508,
         title: "game.bullet.BulletManager"
-    },
+    }/*
     {
         min: 1100,
         max: 1171,
@@ -518,6 +518,96 @@ const INS_1_1_0 = {
         description: "Renders the sub-entries of this sub-menu. Does not actually render the name of the sub-menu itself.",
         documented: true
     },
+    500: {
+        number: 500,
+        name: "BulletManager",
+        package: "",
+        version: "1_1_0",
+        args: "Shspg",
+        argnames: ["size", "ss", "smgr", "player", "game"],
+        description: "Constructs, returns, and initializes the BulletManager struct. Aside from modifying %1 to change the bullet cap or using different values of %4 for a hypothetical versus shooter, this method should not be modified.",
+        documented: true
+    },
+    501: {
+        number: 501,
+        name: "fillSpriteReference",
+        package: "bullet.BulletManager",
+        version: "1_1_0",
+        args: "h",
+        argnames: ["ss"],
+        description: "Converts the bullet spritesheet into individual bullet sprites based on definitions set in `game.bullet.BulletDefs.java`. If a discrepancy is found between BulletDefs and the spritesheet %1 provided, an exception is thrown and the engine will immediately exit.",
+        documented: true
+    },
+    502: {
+        number: 502,
+        name: "updateBullets",
+        package: "bullet.BulletManager",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Iteratively calls each Bullet's `update` method, while also disabling bullets that are outside of the screen and do not have despawn protection set.",
+        documented: true
+    },
+    503: {
+        number: 503,
+        name: "drawBullets",
+        package: "bullet.BulletManager",
+        version: "1_1_0",
+        args: "G",
+        argnames: ["g"],
+        description: "Iteratively calls each Bullet's `draw` method. Notably, bullets are drawn from higher index number downwards, meaning newly-spawned bullets are usually rendered behind older bullets.",
+        documented: true
+    },
+    504: {
+        number: 504,
+        name: "checkCollision",
+        package: "bullet.BulletManager",
+        version: "1_1_0",
+        args: "fff",
+        argnames: ["x", "y", "rad"],
+        description: "Iteratively checks if each bullet should collide with a player at (%1, %2) with hitbox radius %3, and calls `bullet.collideWithPlayer` if a collision is found. Returns immediately if the player has any i-frames.",
+        documented: true
+    },
+    505: {
+        number: 505,
+        name: "checkGraze",
+        package: "bullet.BulletManager",
+        version: "1_1_0",
+        args: "fff",
+        argnames: ["x", "y", "rad"],
+        description: "Iteratively checks if each bullet should be grazed by a player at (%1, %2) with grazebox %3, and calls `bullet.grazedByPlayer` if an intersection is found. Returns immediately if the player has any i-frames.",
+        documented: true
+    },
+    506: {
+        number: 506,
+        name: "deactivateAll",
+        package: "bullet.BulletManager",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Deactivates all bullets, without any sound or visual effects. Conventionally called in between boss patterns, although [method=BulletManager.cancelInRadius,110] will also work.",
+        documented: true
+    },
+    507: {
+        number: 507,
+        name: "cancelInRadius",
+        package: "bullet.BulletManager",
+        version: "1_1_0",
+        args: "fff",
+        argnames: ["x", "y", "rad"],
+        description: "Cancels bullets in a circular area centered on (%1, %2), with radius %3. The cancel has a sound effect. This method should be called once per frame if used by entities that are meant to cancel bullets over a duration.",
+        documented: true
+    },
+    508: {
+        number: 508,
+        name: "addBullet",
+        package: "bullet.BulletManager",
+        version: "1_1_0",
+        args: "ffffSSSfTS",
+        argnames: ["xPos", "yPos", "speed", "angle", "type", "color", "offscreenProtectionFramesNum", "distance", "transformationQueue", "transformationStartingIndex"],
+        description: "Respawns a bullet. This method is only ever intended to be called by BulletSpawners, and calling it directly is considered a hack. Why did I even make this method public?",
+        documented: true
+    },
     
 
 }
@@ -539,6 +629,8 @@ const ARGTYPES = {
     "M": "MenuManager",
     "n": "MenuNew",
     "O": "OptionSelector",
+    "h": "Spritesheet",
+    "T": "BulletTransformation",
     "o": "object"
 }
 function opcodeNameToNumber(name){
@@ -587,5 +679,14 @@ function opcodeNameToNumber(name){
         case "OptionSelector.tick": return 489;
         case "OptionSelector.reactivate": return 490;
         case "OptionSelector.render": return 491;
+        case "BulletManager": return 500;
+        case "BulletManager.fillSpriteReference": return 501;
+        case "BulletManager.updateBullets": return 502;
+        case "BulletManager.drawBullets": return 503;
+        case "BulletManager.checkCollision": return 504;
+        case "BulletManager.checkGraze": return 505;
+        case "BulletManager.deactivateAll": return 506;
+        case "BulletManager.cancelInRadius": return 507;
+        case "BulletManager.addBullet": return 508;
     }
 }
