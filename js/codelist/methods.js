@@ -35,12 +35,12 @@ const GROUPS_1_1_0 =
         min: 500,
         max: 508,
         title: "game.bullet.BulletManager"
-    }/*
-    {
-        min: 1100,
-        max: 1171,
-        title: "game.bullet.Bullet"
     },
+    {
+        min: 530,
+        max: 538,
+        title: "game.bullet.Bullet"
+    }/*
     {
         min: 1300,
         max: 1371,
@@ -545,7 +545,7 @@ const INS_1_1_0 = {
         version: "1_1_0",
         args: "",
         argnames: [],
-        description: "Iteratively calls each Bullet's `update` method, while also disabling bullets that are outside of the screen and do not have despawn protection set.",
+        description: "Iteratively calls each Bullet's [method=Bullet.update,110] method, while also disabling bullets that are outside of the screen and do not have despawn protection set.",
         documented: true
     },
     503: {
@@ -555,7 +555,7 @@ const INS_1_1_0 = {
         version: "1_1_0",
         args: "G",
         argnames: ["g"],
-        description: "Iteratively calls each Bullet's `draw` method. Notably, bullets are drawn from higher index number downwards, meaning newly-spawned bullets are usually rendered behind older bullets.",
+        description: "Iteratively calls each Bullet's [method=Bullet.draw,110] method. Notably, bullets are drawn from higher index number downwards, meaning newly-spawned bullets are usually rendered behind older bullets.",
         documented: true
     },
     504: {
@@ -565,7 +565,7 @@ const INS_1_1_0 = {
         version: "1_1_0",
         args: "fff",
         argnames: ["x", "y", "rad"],
-        description: "Iteratively checks if each bullet should collide with a player at (%1, %2) with hitbox radius %3, and calls `bullet.collideWithPlayer` if a collision is found. Returns immediately if the player has any i-frames.",
+        description: "Iteratively checks if each bullet should collide with a player at (%1, %2) with hitbox radius %3, and calls `bullet.`[method=Bullet.collideWithPlayer,110] if a collision is found. Returns immediately if the player has any i-frames.",
         documented: true
     },
     505: {
@@ -575,7 +575,7 @@ const INS_1_1_0 = {
         version: "1_1_0",
         args: "fff",
         argnames: ["x", "y", "rad"],
-        description: "Iteratively checks if each bullet should be grazed by a player at (%1, %2) with grazebox %3, and calls `bullet.grazedByPlayer` if an intersection is found. Returns immediately if the player has any i-frames.",
+        description: "Iteratively checks if each bullet should be grazed by a player at (%1, %2) with grazebox %3, and calls `bullet.`[method=Bullet.grazedByPlayer,110] if an intersection is found. Returns immediately if the player has any i-frames.",
         documented: true
     },
     506: {
@@ -608,7 +608,96 @@ const INS_1_1_0 = {
         description: "Respawns a bullet. This method is only ever intended to be called by BulletSpawners, and calling it directly is considered a hack. Why did I even make this method public?",
         documented: true
     },
-    
+    530: {
+        number: 530,
+        name: "Bullet",
+        package: "",
+        version: "1_1_0",
+        args: "Bp",
+        argnames: ["mgr", "p"],
+        description: "Constructs and initializes a bullet. Should only ever be called by BulletManager, during that BulletManager's initialization.",
+        documented: true
+    },
+    531: {
+        number: 531,
+        name: "respawnBullet",
+        package: "bullet.Bullet",
+        version: "1_1_0",
+        args: "ffffSSSTS",
+        argnames: ["newXpos", "newYpos", "newSpeed", "newAngle", "newType", "newColor", "offscreenProtectionFramesNum", "newTransformQueue", "startingTransformIndex"],
+        description: "Respawns the bullet. This method should only ever be invoked by `BulletManager.`[method=BulletManager.addBullet,110], which in turn should only ever be invoked via a BulletSpawner's private `shootOneWay`, `shootRingLayer`, or `shootPR_Bullet` methods. The proper way to respawn a bullet is via BulletSpawner.Activate.",
+        documented: true
+    },
+    532: {
+        number: 532,
+        name: "draw",
+        package: "bullet.Bullet",
+        version: "1_1_0",
+        args: "Gig",
+        argnames: ["g", "b", "m"],
+        description: "All code related to rendering this bullet. This method should only ever be invoked by `BulletManager.drawBullets()`.",
+        documented: true
+    },
+    533: {
+        number: 533,
+        name: "deleteBullet",
+        package: "bullet.Bullet",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Plays the bullet cancel sound, then calls [method=Bullet.disable,110].",
+        documented: true
+    },
+    534: {
+        number: 534,
+        name: "disable",
+        package: "bullet.Bullet",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Marks the bullet as inactive.",
+        documented: true
+    },
+    535: {
+        number: 535,
+        name: "update",
+        package: "bullet.Bullet",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Runs all logic relating to moving a bullet. This method should only ever be invoked by `BulletManager.updateBullets()`.",
+        documented: true
+    },
+    536: {
+        number: 536,
+        name: "checkCollision",
+        package: "bullet.Bullet",
+        version: "1_1_0",
+        args: "fff",
+        argnames: ["xCompare", "yCompare", "radCompare"],
+        description: "Checks if this bullet's hitbox intersects with a circle centered at (%1, %2) with radius %3, and returns `true` or `false` accordingly.",
+        documented: true
+    },
+    537: {
+        number: 537,
+        name: "collideWithPlayer",
+        package: "bullet.Bullet",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Disables this bullet, then calls `Player.collideWithBullet`.",
+        documented: true
+    },
+    538: {
+        number: 538,
+        name: "grazedByPlayer",
+        package: "bullet.Bullet",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Plays the graze SFX, then sets this bullet's graze timer to -1.",
+        documented: true
+    },
 
 }
 
@@ -630,10 +719,12 @@ const ARGTYPES = {
     "n": "MenuNew",
     "O": "OptionSelector",
     "h": "Spritesheet",
+    "i": "BufferedImage",
     "T": "BulletTransformation",
     "o": "object"
 }
 function opcodeNameToNumber(name){
+    console.log(name);
     switch(name){
         case "Game.tick": return 0;
         case "Game.render": return 1;
@@ -688,5 +779,14 @@ function opcodeNameToNumber(name){
         case "BulletManager.deactivateAll": return 506;
         case "BulletManager.cancelInRadius": return 507;
         case "BulletManager.addBullet": return 508;
+        case "Bullet": return 530;
+        case "Bullet.respawnBullet": return 531;
+        case "Bullet.draw": return 532;
+        case "Bullet.deleteBullet": return 533;
+        case "Bullet.disable": return 534;
+        case "Bullet.update": return 535;
+        case "Bullet.checkCollision": return 536;
+        case "Bullet.collideWithPlayer": return 537;
+        case "Bullet.grazedByPlayer": return 538;
     }
 }
