@@ -40,12 +40,12 @@ const GROUPS_1_1_0 =
         min: 530,
         max: 538,
         title: "game.bullet.Bullet"
-    }/*
-    {
-        min: 1300,
-        max: 1371,
-        title: "game.bullet.BulletSpawner"
     },
+    {
+        min: 545,
+        max: 562,
+        title: "game.bullet.BulletSpawner"
+    }/*
     {
         min: 1500,
         max: 1541,
@@ -698,6 +698,186 @@ const INS_1_1_0 = {
         description: "Plays the graze SFX, then sets this bullet's graze timer to -1.",
         documented: true
     },
+    545: {
+        number: 545,
+        name: "BulletSpawner",
+        package: "",
+        version: "1_1_0",
+        args: "Bpg",
+        argnames: ["parent", "player", "game"],
+        description: "Constructs and initializes a BulletSpawner struct. This BulletSpawner is naked and not attached to any enemy. To initialize a BulletSpawner that is attached to an enemy, use `Enemy.newSpawner()` instead.",
+        documented: true
+    },
+    546: {
+        number: 546,
+        name: "getSpawnerPos",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Returns the absolute X and Y coordinates this BulletSpawner will shoot from. Currently, there is nothing that calls this method.",
+        documented: true
+    },
+    547: {
+        number: 547,
+        name: "setAngles",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "ff",
+        argnames: ["newAngle1", "newAngle2"],
+        description: "Sets this spawner's `angle1` and `angle2` fields. These fields mean different things in different shooting modes. However, generally `angle1` is the angle the whole pattern is shot at, and `angle2` relates to spacing between bullets.",
+        documented: true
+    },
+    548: {
+        number: 548,
+        name: "setSpeeds",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "ff",
+        argnames: ["newSpeed1", "newSpeed"],
+        description: "Sets this spawner's `speed1` and `speed2` fields. While these two fields are interchangeable, convention is for `speed1` to be the lower bound for the speed of shot bullets and for `speed2` to be the upper bound.",
+        documented: true
+    },
+    549: {
+        number: 549,
+        name: "setSpawnerPos",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "ff",
+        argnames: ["xPos", "yPos"],
+        description: "Sets this spawner's absolute position to (%1, %2), and also makes it stop following the enemy it's attached to.",
+        documented: true
+    },
+    550: {
+        number: 550,
+        name: "setRelativePos",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "ff",
+        argnames: ["xPos", "yPos"],
+        description: "Sets this spawner's position relative to its attached enemy to (%1, %2) and also re-enables enemy following if it was disabled prior.",
+        documented: true
+    },
+    551: {
+        number: 551,
+        name: "setBulletCounts",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "SS",
+        argnames: ["numWays", "numLayers"],
+        description: "Sets this spawner's bullet count attributes. %2 refers to how many layers thick a spawned pattern will be, while %1 refers to how many bullets are in each layer.",
+        documented: true
+    },
+    552: {
+        number: 552,
+        name: "setSpawnDistance",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "f",
+        argnames: ["distance"],
+        description: "Sets this spawner's spawn distance attribute. As soon as bullets are spawned, they will be moved forwards on their current trajectory by this distance. If %1 is negative, they will be moved backwards.",
+        documented: true
+    },
+    553: {
+        number: 553,
+        name: "setMode",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["mode"],
+        description: "Sets the shooting mode. Each mode works differently, but they are based off of the modes in ECL.",
+        documented: true
+    },
+    554: {
+        number: 554,
+        name: "setTypeAndColor",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "SS",
+        argnames: ["bulletType", "bulletColor"],
+        description: "Sets the type and color of spawned bullets. Not all bullets can be all colors.",
+        documented: true
+    },
+    555: {
+        number: 555,
+        name: "setSound",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["sound"],
+        description: "Sets the SFX to be played when this spawner activates.",
+        documented: true
+    },
+    556: {
+        number: 556,
+        name: "setActivationFrequency",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["frequency"],
+        description: "Sets the activation frequency, and resets the countdown until activation. If the activation is not set to a positive integer, then the spawner will not automatically activate. Convention is to set manually-controlled spawners to -1 frequency, but 0 also produces identical behavior.",
+        documented: true
+    },
+    557: {
+        number: 557,
+        name: "setTransformList",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "T",
+        argnames: ["transformsList"],
+        description: "Sets the list of transforms used by this spawner. A null list behaves identically to an empty list.",
+        documented: true
+    },
+    558: {
+        number: 558,
+        name: "setTransformStartingIndex",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["index"],
+        description: "Used by bullets that shoot other bullets. Sets the initial index of the transform that bullets shot by this spawner will execute.",
+        documented: true
+    },
+    559: {
+        number: 558,
+        name: "setSpawnProtectionFrames",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["protectionFramesCount"],
+        description: "Sets the duration of offscreen despawn protection for bullets shot by this spawner. 10, by default.",
+        documented: true
+    },
+    560: {
+        number: 560,
+        name: "tickSpawner",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Updates this spawner's position with respect to its attached enemy, and also manages automatic activation.",
+        documented: true
+    },
+    561: {
+        number: 561,
+        name: "activate",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Shoots bullets according to this spawner's properties.",
+        documented: true
+    },
+    562: {
+        number: 562,
+        name: "reInit",
+        package: "bullet.bulletSpawner",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Resets this bullet spawner to its default properties, including making it stop following the enemy it's attached to.",
+        documented: true
+    },
 
 }
 
@@ -788,5 +968,23 @@ function opcodeNameToNumber(name){
         case "Bullet.checkCollision": return 536;
         case "Bullet.collideWithPlayer": return 537;
         case "Bullet.grazedByPlayer": return 538;
+        case "BulletSpawner": return 545;
+        case "BulletSpawner.getSpawnerPos": return 546;
+        case "BulletSpawner.setAngles": return 547;
+        case "BulletSpawner.setSpeeds": return 548;
+        case "BulletSpawner.setSpawnerPos": return 549;
+        case "BulletSpawner.setRelativePos": return 550;
+        case "BulletSpawner.setBulletCounts": return 551;
+        case "BulletSpawner.setSpawnDistance": return 552;
+        case "BulletSpawner.setMode": return 553;
+        case "BulletSpawner.setTypeAndColor": return 554;
+        case "BulletSpawner.setSound": return 555;
+        case "BulletSpawner.setActivationFrequency": return 556;
+        case "BulletSpawner.setTransformList": return 557;
+        case "BulletSpawner.setTransformStartingIndex": return 558;
+        case "BulletSpawner.setSpawnProtectionFrames": return 559;
+        case "BulletSpawner.tickSpawner": return 560;
+        case "BulletSpawner.activate": return 561;
+        case "BulletSpawner.reInit": return 562;
     }
 }
