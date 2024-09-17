@@ -28,7 +28,7 @@ const INDEX =
 		"single": true,
 		"path": "shmupCC-tutorial/",
 		"type": "blog",
-		"url": 3,
+		"url": 4,
 		"max": 1,
 		"reverse": true,
 		"noItem": true

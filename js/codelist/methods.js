@@ -904,7 +904,6 @@ const ARGTYPES = {
     "o": "object"
 }
 function opcodeNameToNumber(name){
-    console.log(name);
     switch(name){
         case "Game.tick": return 0;
         case "Game.render": return 1;

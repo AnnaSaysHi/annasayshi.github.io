@@ -146,6 +146,21 @@ let ext = function() {
 			return "<instr data-tip=\""+tip+"\">"+getOpcodeShortName(ins)+"</instr>";
 		}
 	}
+	let methodFull = {
+		type: "lang",
+		regex: /\[methodF=(.*?),(.*?)\]/g,
+		replace: function(match, num, game) {
+			let timeline = false;
+			if (game[0] == "t") {
+				timeline = true;
+				game = game.substring(1);
+			}
+			const ins = getOpcode(game, num, timeline);
+			if (ins == null) return "`opcode\\_error\\_"+num+"`";
+			let tip = getOpcodeTip(ins, timeline);
+			return "<instr data-tip=\""+tip+"\">"+getOpcodeName(ins)+"</instr>";
+		}
+	}
 	let method_notip = {
 		type: "lang",
 		regex: /\[method_notip=(.*?),(.*?)\]/g,
@@ -155,9 +170,9 @@ let ext = function() {
 				timeline = true;
 				game = game.substring(1);
 			}
-			const ins = getOpcode(parseFloat(game), parseInt(num), timeline);
+			const ins = getOpcode(game, num, timeline);
 			if (ins == null) return "`opcode\\_error\\_"+num+"`";
-			return "<instr>"+getOpcodeName(ins.number, ins.documented, timeline)+"</instr>";
+			return "<instr>"+getOpcodeShortName(ins)+"</instr>";
 		}
 	}
 
@@ -353,5 +368,5 @@ let ext = function() {
 		}
 	}
 
-	return [anmSelect, eclmap, yt, hr, br, ts, img, img_small, method, method_notip,  variable, variable_notip, code, title, c, include, game, rawGame, html, script, tip, video, flex, flex2, et, anm];
+	return [anmSelect, eclmap, yt, hr, br, ts, img, img_small, method, methodFull, method_notip,  variable, variable_notip, code, title, c, include, game, rawGame, html, script, tip, video, flex, flex2, et, anm];
 }
