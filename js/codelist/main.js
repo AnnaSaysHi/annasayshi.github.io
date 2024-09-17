@@ -203,7 +203,7 @@ function generateOpcodeTableEntry(ins) {
 	return `
 <tr>
 	<td class="ins-signature">
-		<span class="ins-name">${getOpcodeName(ins)}</span><wbr><span class="ins-params">${generateOpcodeParameters(ins)}</span>
+		<span class="ins-name">${getOpcodeShortName(ins)}</span><wbr><span class="ins-params">${generateOpcodeParameters(ins)}</span>
 	<td class="ins-desc">${generateOpcodeDesc(ins)}</td>
 </tr>
 `;

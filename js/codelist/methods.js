@@ -45,12 +45,12 @@ const GROUPS_1_1_0 =
         min: 545,
         max: 562,
         title: "game.bullet.BulletSpawner"
-    }/*
-    {
-        min: 1500,
-        max: 1541,
-        title: "game.bullet.BulletTransformation"
     },
+    {
+        min: 570,
+        max: 592,
+        title: "game.bullet.BulletTransformation"
+    }/*
     {
         min: 2000,
         max: 2171,
@@ -711,7 +711,7 @@ const INS_1_1_0 = {
     546: {
         number: 546,
         name: "getSpawnerPos",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "",
         argnames: [],
@@ -721,7 +721,7 @@ const INS_1_1_0 = {
     547: {
         number: 547,
         name: "setAngles",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "ff",
         argnames: ["newAngle1", "newAngle2"],
@@ -731,7 +731,7 @@ const INS_1_1_0 = {
     548: {
         number: 548,
         name: "setSpeeds",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "ff",
         argnames: ["newSpeed1", "newSpeed"],
@@ -741,7 +741,7 @@ const INS_1_1_0 = {
     549: {
         number: 549,
         name: "setSpawnerPos",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "ff",
         argnames: ["xPos", "yPos"],
@@ -751,7 +751,7 @@ const INS_1_1_0 = {
     550: {
         number: 550,
         name: "setRelativePos",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "ff",
         argnames: ["xPos", "yPos"],
@@ -761,7 +761,7 @@ const INS_1_1_0 = {
     551: {
         number: 551,
         name: "setBulletCounts",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "SS",
         argnames: ["numWays", "numLayers"],
@@ -771,7 +771,7 @@ const INS_1_1_0 = {
     552: {
         number: 552,
         name: "setSpawnDistance",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "f",
         argnames: ["distance"],
@@ -781,7 +781,7 @@ const INS_1_1_0 = {
     553: {
         number: 553,
         name: "setMode",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "S",
         argnames: ["mode"],
@@ -791,7 +791,7 @@ const INS_1_1_0 = {
     554: {
         number: 554,
         name: "setTypeAndColor",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "SS",
         argnames: ["bulletType", "bulletColor"],
@@ -801,7 +801,7 @@ const INS_1_1_0 = {
     555: {
         number: 555,
         name: "setSound",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "S",
         argnames: ["sound"],
@@ -811,7 +811,7 @@ const INS_1_1_0 = {
     556: {
         number: 556,
         name: "setActivationFrequency",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "S",
         argnames: ["frequency"],
@@ -821,7 +821,7 @@ const INS_1_1_0 = {
     557: {
         number: 557,
         name: "setTransformList",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "T",
         argnames: ["transformsList"],
@@ -831,7 +831,7 @@ const INS_1_1_0 = {
     558: {
         number: 558,
         name: "setTransformStartingIndex",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "S",
         argnames: ["index"],
@@ -841,7 +841,7 @@ const INS_1_1_0 = {
     559: {
         number: 558,
         name: "setSpawnProtectionFrames",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "S",
         argnames: ["protectionFramesCount"],
@@ -851,7 +851,7 @@ const INS_1_1_0 = {
     560: {
         number: 560,
         name: "tickSpawner",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "",
         argnames: [],
@@ -861,7 +861,7 @@ const INS_1_1_0 = {
     561: {
         number: 561,
         name: "activate",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "",
         argnames: [],
@@ -871,11 +871,241 @@ const INS_1_1_0 = {
     562: {
         number: 562,
         name: "reInit",
-        package: "bullet.bulletSpawner",
+        package: "bullet.BulletSpawner",
         version: "1_1_0",
         args: "",
         argnames: [],
         description: "Resets this bullet spawner to its default properties, including making it stop following the enemy it's attached to.",
+        documented: true
+    },
+    570: {
+        number: 570,
+        name: "BulletTransformation",
+        package: "",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Constructs and returns an empty bullet transformation queue. This behaves identically to queue filled up entirely with `TRANSFORM_NO_TRANSFORM`.",
+        documented: true
+    },
+    571: {
+        number: 571,
+        name: "clone",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Constructs and returns a transformation queue that is a copy of this queue. Modifying the copy will not affect the original.",
+        documented: true
+    },
+    572: {
+        number: 572,
+        name: "removeTransformationAtIndex",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["index"],
+        description: "Removes the transformation at %1 from the queue. Transformations in indices higher than %1 will be shifted forward in the queue by 1.",
+        documented: true
+    },
+    573: {
+        number: 573,
+        name: "queueNoTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Queues a no-transform. If executed, the bullet will stop executing further transformations, even if it has not reached the end of the queue.",
+        documented: true
+    },
+    574: {
+        number: 574,
+        name: "insertNoTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["index"],
+        description: "Inserts a no-transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. If executed, the bullet will stop executing further transformations, even if it has not reached the end of the queue.",
+        documented: true
+    },
+    575: {
+        number: 575,
+        name: "queueWaitTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["duration"],
+        description: "Queues a wait transform. If executed, the bullet will wait for the %1 frames before executing further transformations.",
+        documented: true
+    },
+    576: {
+        number: 576,
+        name: "insertWaitTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SS",
+        argnames: ["index", "duration"],
+        description: "Inserts a wait transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. If executed, the bullet will wait for %2 frames before executing further transformations.",
+        documented: true
+    },
+    577: {
+        number: 577,
+        name: "queueGotoTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SS",
+        argnames: ["destinationIndex", "numLoops"],
+        description: "Queues a control flow transformation that changes the bullet's transformation index to %1, then immediately activates the transformation at that index. If the bullet has already executed a GOTO transformation %2 or more times, this transformation will not execute. The number of times a bullet has activated a GOTO transformation is shared across different GOTO transforms in the same queue. If %2 is set to -1, this transformation will always execute. If %2 is set to 0, this transformation will never execute.",
+        documented: true
+    },
+    578: {
+        number: 578,
+        name: "insertGotoTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SSS",
+        argnames: ["index", "destinationIndex", "numLoops"],
+        description: "Inserts a GOTO transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. If executed, the bullet will change its transformation index to %2, then immediately activates the transformation at that index. If the bullet has already executed a GOTO transformation %3 or more times, this transformation will not execute. The number of times a bullet has activated a GOTO transformation is shared across different GOTO transforms in the same queue. If %3 is set to -1, this transformation will always execute. If %3 is set to 0, this transformation will never execute.",
+        documented: true
+    },
+    579: {
+        number: 579,
+        name: "queueAccelAngleVelTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "Sff",
+        argnames: ["duration", "accel", "angleVel"],
+        description: "Queues a velocity-affecting transformation. When executed, for %1 frames, the bullet's speed will be incremented by %2, and its angle will be incremented by %3. If %2 or %3 is set to 0, the bullet's speed or angle will not be affected.",
+        documented: true
+    },
+    580: {
+        number: 580,
+        name: "insertAccelAngleVelTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SSff",
+        argnames: ["index", "duration", "accel", "angleVel"],
+        description: "Inserts a velocity-affeccting transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. When executed, for %2 frames, the bullet's speed will be incremented by %3, and its angle will be incremented by %4. If %3 or %4 is set to 0, the bullet's speed or angle will not be affected.",
+        documented: true
+    },
+    581: {
+        number: 581,
+        name: "queueAccelDirTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "Sff",
+        argnames: ["duration", "accel", "angle"],
+        description: "Queues a velocity-affecting transform. When executed, for %1 frames, the bullet will accelerate with magnitude %2 units/frame in direction %3.",
+        documented: true
+    },
+    582: {
+        number: 582,
+        name: "insertAccelDirTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SSff",
+        argnames: ["index", "duration", "accel", "angle"],
+        description: "Inserts a velocity-affecting transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. If executed, for %2 frames, the bullet will accelerate with magnitude %3 units/frame in direction %4.",
+        documented: true
+    },
+    583: {
+        number: 583,
+        name: "queueOffscreenTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["time"],
+        description: "Queues a transformation that allows the bullet to persist offscreen for %1 frames. The next transform in the queue will immediately execute, regardless of the duration of persistence granted to the bullet.",
+        documented: true
+    },
+    584: {
+        number: 584,
+        name: "insertOffscreenTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SS",
+        argnames: ["index", "time"],
+        description: "Inserts an offscreen-persistence transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. When executed, the bullet will be able to persist offscreen for %2 frames. The next transform in the queue will immediately execute, regardless of the duration of persistence granted to the bullet.",
+        documented: true
+    },
+    585: {
+        number: 585,
+        name: "queueDeleteTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Queues a transformation that causes the bullet to immediately delete itself when executed.",
+        documented: true
+    },
+    586: {
+        number: 585,
+        name: "insertDeleteTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["index"],
+        description: "Inserts a delete transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. When executed, the bullet will immediately delete itself.",
+        documented: true
+    },
+    587: {
+        number: 587,
+        name: "queueSoundTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["sound"],
+        description: "Queues a transformation that causes the bullet to play the sound effect with ID %1 when executed.",
+        documented: true
+    },
+    588: {
+        number: 588,
+        name: "insertSoundTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SS",
+        argnames: ["index", "sound"],
+        description: "Inserts a sound transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. When executed, the bullet will play the sound effect with ID %2.",
+        documented: true
+    },
+    589: {
+        number: 589,
+        name: "queueShootPrepareTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SSSSffff",
+        argnames: ["transformIndex", "aim", "ways", "layers", "angle1", "angle2", "speed1", "speed2"],
+        description: "Queues the first part of a two-part transform that allows bullets to shoot bullets. Sets properties related to the bullet spawner. Bullets shot via this transformation will use the same transformation queue as the bullet it was spawned from, but they will start from the index provided by %1. After executing this transform, the next transform will execute immediately.",
+        documented: true
+    },
+    590: {
+        number: 590,
+        name: "insertShootPrepareTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SSSSSffff",
+        argnames: ["index", "transformIndex", "aim", "ways", "layers", "angle1", "angle2", "speed1", "speed2"],
+        description: "Inserts the first part of the two-part bullet-spawning transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. Sets properties related to the bullet spawner. Bullets shot via this transformation will use the same transformation queue as the bullet it was spawned from, but they will start from the index provided by %2. After executing this transform, the next transform will execute immediately.",
+        documented: true
+    },
+    591: {
+        number: 591,
+        name: "queueShootActivateTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SSS",
+        argnames: ["type", "color", "delete"],
+        description: "Queues the second part of a two-part transform that allows bullets to shoot bullets. Upon executing this transform, the bullet will immediately shoot, with bullet spawner properties defined by the SHOOT\\\_PREPARE transform. If this bullet has not yet activated a SHOOT\\\_PREPARE transform, undefined behavior will occur. After executing this transform, if %3 is non-zero, the bullet will delete itself. Otherwise, the next transform will execute immediately.",
+        documented: true
+    },
+    592: {
+        number: 592,
+        name: "insertShootActivateTransform",
+        package: "bullet.BulletTransformation",
+        version: "1_1_0",
+        args: "SSSS",
+        argnames: ["index", "type", "color", "delete"],
+        description: "Inserts the second part of the two-part bullet-spawning transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. Upon executing this transform, the bullet will immediately shoot, with bullet spawner properties defined by the SHOOT\\\_PREPARE transform. If this bullet has not yet activated a SHOOT\\\_PREPARE transform, undefined behavior will occur. After executing this transform, if %3 is non-zero, the bullet will delete itself. Otherwise, the next transform will execute immediately.",
         documented: true
     },
 
@@ -985,5 +1215,28 @@ function opcodeNameToNumber(name){
         case "BulletSpawner.tickSpawner": return 560;
         case "BulletSpawner.activate": return 561;
         case "BulletSpawner.reInit": return 562;
+        case "BulletTransformation": return 570;
+        case "BulletTransformation.clone": return 571;
+        case "BulletTransformation.removeTransformAtIndex": return 572;
+        case "BulletTransformation.queueNoTransform": return 573;
+        case "BulletTransformation.insertNoTransform": return 574;
+        case "BulletTransformation.queueWaitTransform": return 575;
+        case "BulletTransformation.insertWaitTransform": return 576;
+        case "BulletTransformation.queueGotoTransform": return 577;
+        case "BulletTransformation.insertGotoTransform": return 578;
+        case "BulletTransformation.queueAccelAngleVelTransform": return 579;
+        case "BulletTransformation.insertAccelAngleVelTransform": return 580;
+        case "BulletTransformation.queueAccelDirTransform": return 581;
+        case "BulletTransformation.insertAccelDirTransform": return 582;
+        case "BulletTransformation.queueOffscreenTransform": return 583;
+        case "BulletTransformation.insertOffscreenTransform": return 584;
+        case "BulletTransformation.queueDeleteTransform": return 585;
+        case "BulletTransformation.insertDeleteTransform": return 586;
+        case "BulletTransformation.queueSoundTransform": return 587;
+        case "BulletTransformation.insertSoundTransform": return 588;
+        case "BulletTransformation.queueShootPrepareTransform": return 589;
+        case "BulletTransformation.insertShootPrepareTransform": return 590;
+        case "BulletTransformation.queueShootActivateTransform": return 591;
+        case "BulletTransformation.insertShootActivateTransform": return 592;
     }
 }
