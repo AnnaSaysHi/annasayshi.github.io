@@ -50,17 +50,17 @@ const GROUPS_1_1_0 =
         min: 570,
         max: 592,
         title: "game.bullet.BulletTransformation"
-    }/*
+    },
     {
-        min: 2000,
-        max: 2171,
+        min: 650,
+        max: 663,
         title: "game.enemy.EnemyManager"
     },
     {
-        min: 2200,
-        max: 2471,
+        min: 670,
+        max: 696,
         title: "game.enemy.Enemy"
-    },
+    }/*
     {
         min: 2500,
         max: 2550,
@@ -1108,6 +1108,416 @@ const INS_1_1_0 = {
         description: "Inserts the second part of the two-part bullet-spawning transform at index %1, shifting transformations with indices %1 and higher backwards in the queue by 1. Upon executing this transform, the bullet will immediately shoot, with bullet spawner properties defined by the SHOOT\\\_PREPARE transform. If this bullet has not yet activated a SHOOT\\\_PREPARE transform, undefined behavior will occur. After executing this transform, if %3 is non-zero, the bullet will delete itself. Otherwise, the next transform will execute immediately.",
         documented: true
     },
+    650: {
+        number: 650,
+        name: "EnemyManager",
+        package: "",
+        version: "1_1_0",
+        args: "ShBpgs",
+        argnames: ["size", "ss", "mgr", "p", "g", "smgr"],
+        description: "Constructs, initializes, and returns the enemy manager struct.",
+        documented: true
+    },
+    651: {
+        number: 651,
+        name: "updateEnemies",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Iteratively calls each active enemy's tickEnemy method, then cleans up references to inactive enemies.",
+        documented: true
+    },
+    652: {
+        number: 652,
+        name: "updateEnemies",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "G",
+        argnames: ["g"],
+        description: "Iteratively calls each active enemy's draw method. Returns `true` if any enemy has the `FLAG_BOSS` flag set; `false` otherwise.",
+        documented: true
+    },
+    653: {
+        number: 653,
+        name: "updateEnemies",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "G",
+        argnames: ["g"],
+        description: "Iteratively calls the `renderHPbar` method of all enemies that have their `FLAG_BOSS` flag set.",
+        documented: true
+    },
+    654: {
+        number: 654,
+        name: "hitEnemies",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "SSSS",
+        argnames: ["x", "y", "hitbox", "damage"],
+        description: "Iteratively searches for any tangible enemy that would collide with an axis-aligned square, centered on (%1, %2) with side length %3. If a collision is found, immediately deal %4 damage to that enemy and then return `true`. If no collision is found, return `false`.",
+        documented: true
+    },
+    655: {
+        number: 655,
+        name: "checkCollision",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "fff",
+        argnames: ["x", "y", "rad"],
+        description: "For each enemy, check if they should collide with the player, using the given parameters as the player's position and hitbox size.",
+        documented: true
+    },
+    656: {
+        number: 656,
+        name: "addEnemy",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "effSc",
+        argnames: ["e", "xpos", "ypos", "HP", "mirrored"],
+        description: "Adds %1 to the list of enemies and initializes it to spawn at (%2, %3) with HP %4, and sets `FLAG_MIRROR` if %5 contains `true`.",
+        documented: true
+    },
+    657: {
+        number: 657,
+        name: "addEnemy",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "effScS",
+        argnames: ["e", "xpos", "ypos", "HP", "mirrored", "subtype"],
+        description: "Same as [method=EnemyManager.addEnemy1,110], but takes an additional argument %6 that is then passed to %1 to allow for enemies sharing the same class to have slightly different behaviors.",
+        documented: true
+    },
+    658: {
+        number: 658,
+        name: "clearEnemies",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Deletes all enemies, except for those with flags `FLAG_CONTROL_ENEMY` or `FLAG_DIALOGUE_IMMUNE` set.",
+        documented: true
+    },
+    659: {
+        number: 659,
+        name: "reset",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Deletes all enemies, even enemies that are marked as immune to deletion. Also zeros out the `intVars` and `floatVars` arrays.",
+        documented: true
+    },
+    660: {
+        number: 660,
+        name: "getIntVar",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["index"],
+        description: "Returns the value stored in the `intVars` array with index %1.",
+        documented: true
+    },
+    661: {
+        number: 661,
+        name: "setIntVar",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "SS",
+        argnames: ["index", "value"],
+        description: "Sets the value at `intVars` index %1 to %2.",
+        documented: true
+    },
+    662: {
+        number: 662,
+        name: "getFloatVar",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["index"],
+        description: "Returns the value stored in the `floatVars` array with index %1.",
+        documented: true
+    },
+    663: {
+        number: 663,
+        name: "setFloatVar",
+        package: "enemy.EnemyManager",
+        version: "1_1_0",
+        args: "Sf",
+        argnames: ["index", "value"],
+        description: "Sets the value at `floatVars` index %1 to %2.",
+        documented: true
+    },
+    670: {
+        number: 670,
+        name: "Enemy",
+        package: "",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Constructs, initializes and returns an enemy. Since `Enemy` is an abstract class, you must create a subclass of it.",
+        documented: true
+    },
+    671: {
+        number: 671,
+        name: "initEnemy",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "ffScBpgEs",
+        argnames: ["x", "y", "health", "mirrored", "bmgr", "p", "g", "emgr", "smgr"],
+        description: "Initializes the enemy's health, position, and pointers to manager structs. To properly initialize an enemy, use [methodF=EnemyManager.addEnemy1,110] instead.",
+        documented: true
+    },
+    672: {
+        number: 672,
+        name: "initEnemyWithSubtype",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "ffScBpgEsS",
+        argnames: ["x", "y", "health", "mirrored", "bmgr", "p", "g", "emgr", "smgr", "subtype"],
+        description: "Calls [method=Enemy.initEnemy,110], then sets `subtype` to %10. To properly initialize an enemy with a subtype, use [methodF=EnemyManager.addEnemy2,110] instead.",
+        documented: true
+    },
+    673: {
+        number: 673,
+        name: "initActions",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "An abstract method that contains all user-defined enemy actions to take while being initialized. Invoked after [method=Enemy.initEnemy,110].",
+        documented: true
+    },
+    674: {
+        number: 674,
+        name: "setEnemySprite",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["spr"],
+        description: "Sets this enemy's sprite. Valid values in version 1.1.0 are -1, 0, 1, or 2. -1 is invisible, values outside of this range will crash the game.",
+        documented: true
+    },
+    675: {
+        number: 675,
+        name: "tickEnemy",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Calls a bunch of other methods relating to enemy logic.",
+        documented: true
+    },
+    676: {
+        number: 676,
+        name: "doEnemyActions",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "An abstract method that contains all user-defined enemy logic.",
+        documented: true
+    },
+    677: {
+        number: 677,
+        name: "processEnemyMovement",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Responsible for enemy movement. Called by [method=Enemy.tickEnemy,110].",
+        documented: true
+    },
+    678: {
+        number: 678,
+        name: "returnEnemySprite",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Returns the enemy's sprite.",
+        documented: true
+    },
+    679: {
+        number: 679,
+        name: "takeDamage",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "The enemy's HP is subtracted by the value stored in `damageToTake`; if `HP` is now lower than `hpCallbackThreshold` invoke [method=Enemy.doHPcallback,110]; if after this `HP` is below 0 call [method=Enemy.onDeath,110] then disable the enemy.",
+        documented: true
+    },
+    680: {
+        number: 680,
+        name: "doHPcallback",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Invoked whenever the enemy's HP falls below `hpCallbackThreshold`. Behavior is defined by the user; does nothing by default.",
+        documented: true
+    },
+    681: {
+        number: 681,
+        name: "addDamage",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["damage"],
+        description: "Adds %1 to `damageToTake` unless `FLAG_DAMAGE_IMMUNE` is set.",
+        documented: true
+    },
+    682: {
+        number: 682,
+        name: "renderEnemy",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "Gb",
+        argnames: ["g", "b"],
+        description: "Draws this enemy.",
+        documented: true
+    },
+    683: {
+        number: 683,
+        name: "renderHPbar",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "G",
+        argnames: ["g"],
+        description: "Draws a red circular HP bar around this enemy.",
+        documented: true
+    },
+    684: {
+        number: 684,
+        name: "onDeath",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Called whenever the enemy's HP drops to 0. Behavior must be user-defined; default behavior does nothing.",
+        documented: true
+    },
+    685: {
+        number: 685,
+        name: "testFlag",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["flagNum"],
+        description: "Returns the truthiness of the flag with index %1.",
+        documented: true
+    },
+    686: {
+        number: 686,
+        name: "setFlag",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["flagNum"],
+        description: "Enables the flag with index %1.",
+        documented: true
+    },
+    687: {
+        number: 687,
+        name: "clearFlag",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "S",
+        argnames: ["flagNum"],
+        description: "Disables the flag with index %1.",
+        documented: true
+    },
+    688: {
+        number: 688,
+        name: "resetFlags",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Turns all flags off.",
+        documented: true
+    },
+    689: {
+        number: 689,
+        name: "setPosAbs",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "ff",
+        argnames: ["x", "y"],
+        description: "Sets this enemy's position to (%1, %2).",
+        documented: true
+    },
+    690: {
+        number: 690,
+        name: "setPosRel",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "ff",
+        argnames: ["x", "y"],
+        description: "Changes this enemy's position by (%1, %2).",
+        documented: true
+    },
+    691: {
+        number: 691,
+        name: "setPosAbsTime",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "SSff",
+        argnames: ["t", "mode", "x", "y"],
+        description: "Over a duration of %1 frames and using interpolation mode %2, this enemy will move to position (%3, %4).",
+        documented: true
+    },
+    692: {
+        number: 692,
+        name: "setPosRelTime",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "SSff",
+        argnames: ["t", "mode", "x", "y"],
+        description: "Over a duration of %1 frames and using interpolation mode %2, this enemy's position will change by (%3, %4).",
+        documented: true
+    },
+    693: {
+        number: 693,
+        name: "setMovementBounds",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "ffff",
+        argnames: ["leftBound", "rightBound", "topBound", "bottomBound"],
+        description: "Sets the enemy's movement boundaries for random movement.",
+        documented: true
+    },
+    694: {
+        number: 694,
+        name: "moveRandomWithinBounds",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "SS",
+        argnames: ["t", "mode"],
+        description: "Over a duration of %1 frames and using interpolation mode %2, this enemy will move to a random point within its movement boundaries.",
+        documented: true
+    },
+    695: {
+        number: 695,
+        name: "clearSpawners",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Clears the enemy's `spawners` list.",
+        documented: true
+    },
+    696: {
+        number: 696,
+        name: "newSpawner",
+        package: "enemy.Enemy",
+        version: "1_1_0",
+        args: "",
+        argnames: [],
+        description: "Initializes a new bullet spawner attached to this enemy, and returns the index of the newly-created spawner within the `spawners` list.",
+        documented: true
+    },
 
 }
 
@@ -1115,6 +1525,7 @@ const INS_1_1_0 = {
 const ARGTYPES = {
     "S": "int",
     "f": "double",
+    "c": "boolean",
     "m": "string",
     "B": "BulletManager",
     "b": "Bullet",
@@ -1238,5 +1649,46 @@ function opcodeNameToNumber(name){
         case "BulletTransformation.insertShootPrepareTransform": return 590;
         case "BulletTransformation.queueShootActivateTransform": return 591;
         case "BulletTransformation.insertShootActivateTransform": return 592;
+        case "EnemyManager": return 650;
+        case "EnemyManager.updateEnemies": return 651;
+        case "EnemyManager.drawEnemies": return 652;
+        case "EnemyManager.drawHPbars": return 653;
+        case "EnemyManager.hitEnemies": return 654;
+        case "EnemyManager.checkCollision": return 655;
+        case "EnemyManager.addEnemy1": return 656;
+        case "EnemyManager.addEnemy2": return 657;
+        case "EnemyManager.clearEnemies": return 658;
+        case "EnemyManager.reset": return 659;
+        case "EnemyManager.getIntVar": return 660;
+        case "EnemyManager.setIntVar": return 661;
+        case "EnemyManager.getFloatVar": return 662;
+        case "EnemyManager.setFloatVar": return 663;
+        case "Enemy": return 670;
+        case "Enemy.initEnemy": return 671;
+        case "Enemy.initEnemyWithSubtype": return 672;
+        case "Enemy.initActions": return 673;
+        case "Enemy.setEnemySprite": return 674;
+        case "Enemy.tickEnemy": return 675;
+        case "Enemy.doEnemyActions": return 676;
+        case "Enemy.processEnemyMovement": return 677;
+        case "Enemy.returnEnemySprite": return 678;
+        case "Enemy.takeDamage": return 679;
+        case "Enemy.doHPcallback": return 680;
+        case "Enemy.addDamage": return 681;
+        case "Enemy.renderEnemy": return 682;
+        case "Enemy.renderHPbar": return 683;
+        case "Enemy.onDeath": return 684;
+        case "Enemy.testFlag": return 685;
+        case "Enemy.setFlag": return 686;
+        case "Enemy.clearFlag": return 687;
+        case "Enemy.resetFlags": return 688;
+        case "Enemy.setPosAbs": return 689;
+        case "Enemy.setPosRel": return 690;
+        case "Enemy.setPosAbsTime": return 691;
+        case "Enemy.setPosRelTime": return 692;
+        case "Enemy.setMovementBounds": return 693;
+        case "Enemy.moveRandomWithinBounds": return 694;
+        case "Enemy.clearSpawners": return 695;
+        case "Enemy.addSpawner": return 696;
     }
 }
