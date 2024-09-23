@@ -1689,6 +1689,6 @@ function opcodeNameToNumber(name){
         case "Enemy.setMovementBounds": return 693;
         case "Enemy.moveRandomWithinBounds": return 694;
         case "Enemy.clearSpawners": return 695;
-        case "Enemy.addSpawner": return 696;
+        case "Enemy.newSpawner": return 696;
     }
 }
